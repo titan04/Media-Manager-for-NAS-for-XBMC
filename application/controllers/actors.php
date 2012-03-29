@@ -7,7 +7,7 @@ class Actors extends CI_Controller {
 	public function __construct() {
 		parent::__construct();
 
-		// Chargement des modèles de la base de données 'xbmc_video'
+		// Loading the models of the database 'xbmc_video'
 		$this -> load -> model('video/actors_model');
 		$this -> load -> model('video/countries_model');
 		$this -> load -> model('video/episodes_model');
@@ -21,24 +21,24 @@ class Actors extends CI_Controller {
 	}
 
 	/**
-	 * Affiche la liste de toutes les personnalités
+	 * Lists all personalities
 	 */
 	function index() {
-		// Si l'utilisateur est un administrateur
+		// If the user is an administrator
 		if ($this -> session -> userdata('is_admin')) {
-			// L'utilisateur n'est pas dans l'adminitration
+			// The user is not an administrator
 			$this -> session -> set_userdata(array('in_admin' => FALSE));
 		}
 
 		$per_page = 10;
 
-		// Adresse de base pour la pagination
+		// Base address for actors
 		$base_url = site_url('actors/page');
 		$tpl['title'] = $this -> lang -> line('list_actors');
 
 		$tpl['actors'] = $this -> actors_model -> get_all($per_page, intval($this -> uri -> segment(3)));
 
-		// Total des personnalités pour la pagination
+		// Total actors
 		$total = $this -> actors_model -> count_all();
 
 		// On charge la vue qui contient le corps de la page
