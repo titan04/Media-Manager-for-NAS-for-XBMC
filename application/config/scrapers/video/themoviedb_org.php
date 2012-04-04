@@ -1,6 +1,6 @@
 <?php
 
-$config['api_key'] = '57983e31fb435df4df77afb854740ea9';
+$config['api_key'] = 'b8b7362d2befa1fae6be990eed91c646';
 $config['lang'] = 'en';
 
 /* End of file themoviedb_org.php */
